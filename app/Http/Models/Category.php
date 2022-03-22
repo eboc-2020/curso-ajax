@@ -8,7 +8,7 @@ class Category extends Model
 {
     
     //Relacion de uno a muchos
-    public function category(){
+    public function posts(){
         return $this->hasMany(Post::class);
     }
 }
