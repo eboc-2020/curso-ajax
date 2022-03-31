@@ -45,7 +45,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::with('posts')->findOrFail($id);
+        //whith es para incluir una relacion fija
+        //para traer una relacion segun lo que ingrese el cliente se debe usar included()
+        $category = Category::included()->findOrFail($id);
         return $category;
     }
 
