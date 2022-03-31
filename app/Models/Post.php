@@ -1,11 +1,27 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $table = 'posts';
+
+    protected $primaryKey = 'id_post';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'extract',
+        'body',
+        'status',
+        'id_user',
+        'category_id'
+    ];
+
     //Relacion uno a muchos inversa post con categoria y con user
     public function user(){
         return $this->belongsTo(User::class);

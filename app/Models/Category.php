@@ -18,6 +18,6 @@ class Category extends Model
     ];
     //Relacion de uno a muchos
     public function posts(){
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class,'category_id','id_category');
     }
 }
