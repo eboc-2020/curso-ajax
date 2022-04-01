@@ -22,6 +22,8 @@ class Category extends Model
     //son las relaciones que pueden existir
     protected $allowIncluded = ['posts','posts.user'];
 
+    protected $allowFilter = ['name','slug','id_category'];
+
     //Relacion de uno a muchos
     public function posts(){
         return $this->hasMany(Post::class,'category_id','id_category');
@@ -51,5 +53,21 @@ class Category extends Model
 
         $query->with($relations);
 
+    }
+
+    public function scopeFilter(Builder $query){
+        if (empty($this->allowFilter) || empty(request('filter'))) {
+
+            return;
+        }
+
+        $filters=request('filter');
+        $allowFilter = collect($this->allowFilter);
+
+        foreach ($filters as $filter => $value) {
+            if ($allowFilter->contains($filter)) {
+                $query->where($filter, 'LIKE','%' . $value . '%');
+            }
+        }
     }
 }
