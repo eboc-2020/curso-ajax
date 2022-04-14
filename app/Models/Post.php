@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\ApiTraits;
 class Post extends Model
 {
+    use ApiTraits;
     protected $table = 'posts';
 
     protected $primaryKey = 'id_post';
