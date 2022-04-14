@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
@@ -17,8 +18,8 @@ class CategoryController extends Controller
     {
         $categories=Category::included()
                     ->filter()->get();
-
-        return $categories;
+        //el metodo collection transforma la coleccion en un json
+        return CategoryResource::collection($categories);
     }
 
     /**
@@ -49,7 +50,7 @@ class CategoryController extends Controller
         //whith es para incluir una relacion fija
         //para traer una relacion segun lo que ingrese el cliente se debe usar included()
         $category = Category::included()->findOrFail($id);
-        return $category;
+        return new CategoryResource($category);
     }
 
     /**

@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::post('curso/actualiza',[PrincipalController::class,'update']);
 Route::resource('curso', 'PrincipalController');
-Route::get('curso/ver', function(){
+Route::get('adios', function(){
     return 'curso/ver';
 });
