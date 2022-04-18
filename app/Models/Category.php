@@ -22,7 +22,7 @@ class Category extends Model
         'slug'
     ];
 
-    //son las relaciones que pueden existir
+    //son las relaciones que pueden existir 'posts.user' relacion en anidada posts y dentro de ello user
     protected $allowIncluded = ['posts','posts.user'];
 
     protected $allowFilter = ['name','slug','id_category']; 

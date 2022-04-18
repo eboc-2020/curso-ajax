@@ -50,6 +50,7 @@ class CategoryController extends Controller
         //whith es para incluir una relacion fija
         //para traer una relacion segun lo que ingrese el cliente se debe usar included()
         $category = Category::included()->findOrFail($id);
+        //Tambien se puede utilizar make:: en vez de instanciar
         return new CategoryResource($category);
     }
 

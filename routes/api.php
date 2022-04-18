@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::get('/',function(){
 });
 
 
-//Endpont
+//Endpoint
 Route::post('register',[RegisterController::class,'store'])->name('api.v1.register');
 
 Route::get('categories',[CategoryController::class,'index'])->name('api.v1.categories.index'); // ruta para mostrar todas las categorias q se tiene en la BD
@@ -36,4 +37,7 @@ Route::put('categories/{category}',[CategoryController::class,'update'])->name('
 Route::delete('categories/{category}',[CategoryController::class,'destroy'])->name('api.v1.categories.delete'); // ruta que elimina una categoria
 
 
-//Route::apiResource('categories',CategoryController::class)->names('api.v1.categories');
+//Route::apiResource('categories',Api\CategoryController::class)->names('api.v1.categories');
+
+//para hacerle saber que el archivo PostoController esta en la carpeta Api
+Route::apiResource('posts',Api\PostController::class)->names('api.v1.posts');
