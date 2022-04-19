@@ -10,6 +10,13 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        //La forma de autenticarse se utilizar auth:api ya que se quiere autenticar para api's
+        //para proteger todas las rutas excepto las que se ingresan acá
+        $this->middleware('auth:api')->except(['index','show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +24,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        /* dd(auth()->user()); */
         $posts=Post::included()
                     ->filter()
                     ->get();
