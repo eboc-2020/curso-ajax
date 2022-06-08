@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
 use App\Models\Category;
+use App\User;
 
 class PostController extends Controller
 {
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        /* dd(auth()->user()); */
+        dd(bcrypt('12345678'));
         $posts=Post::included()
                     ->filter()
                     ->get();
