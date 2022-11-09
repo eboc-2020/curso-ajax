@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\Api\PostController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//ruta que voy a utilizar para recibir peticiones sobre un usuario
+Route::post('login',[LoginController::class,'store']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
