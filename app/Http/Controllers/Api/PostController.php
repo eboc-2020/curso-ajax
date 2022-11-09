@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        dd(bcrypt('12345678'));
+        /* dd(bcrypt('12345678')); */
         $posts=Post::included()
                     ->filter()
                     ->get();
@@ -41,6 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        dd(\Auth::user());
         $request->validate([
             'name' =>'required|max:255',
             'slug' =>'required|max:255|unique:posts',
