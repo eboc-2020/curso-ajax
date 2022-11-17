@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 |
 */
 
-//ruta que voy a utilizar para recibir peticiones sobre un usuario
+//ruta que voy a utilizar para recibir peticiones sobre un usuario desde el cliente
 Route::post('login',[LoginController::class,'store']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

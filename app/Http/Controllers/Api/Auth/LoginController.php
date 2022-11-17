@@ -11,17 +11,18 @@ class LoginController extends Controller
 {
     //
     public function store(Request $request){
+        //dd('hola');
         $request->validate([
             'email'=>'required|string|email',
             'password'=>'required|string',
         ]);
 
         $user = User::where('email', $request->email)->firstOrFail(); //por si el email no exist en la BD
-
-        if(Hash::check($request->email,$user->password)){
-            return $user;
+        
+        if(Hash::check($request->password,$user->password)){
+            return response()->json($user);
         }else{
-            response()->json(['message' =>'Las credenciales son incorrectas'],400);
+            return response()->json(['message' =>'Las credenciales son incorrectas'],400);
         }
     }
 }
