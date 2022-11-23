@@ -21,7 +21,7 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->firstOrFail(); //por si el email no exist en la BD
         
         if(Hash::check($request->password,$user->password)){
-            return $user;
+            return UserResourse::make($user);
         }else{
             return response()->json(['message' =>'Las credenciales son incorrectas'],400);
         }
