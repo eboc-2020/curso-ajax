@@ -41,7 +41,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd(\Auth::user());
+        //dd(\Auth::user());
         $request->validate([
             'name' =>'required|max:255',
             'slug' =>'required|max:255|unique:posts',
